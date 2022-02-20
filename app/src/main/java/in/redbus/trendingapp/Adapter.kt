@@ -51,7 +51,7 @@ class Adapter(private var listItem: ArrayList<Items>,
             }
             holder.binding.tvName.text = item.name
         }
-        if(selectedItemPos == position){
+        if(selectedItemPos == position || item.isSelected){
             holder.itemView.setBackgroundColor(Color.parseColor("#567845"));
             holder.binding.tvName.setTextColor(Color.parseColor("#ffffff"));
         }
@@ -76,9 +76,12 @@ class Adapter(private var listItem: ArrayList<Items>,
                     filterList = listItem
                 } else {
                     val resultList = ArrayList<Items>()
-                    for (row in listItem) {
-                        if (row.name.lowercase(Locale.ROOT).contains(charSearch.lowercase(Locale.ROOT))) {
-                            resultList.add(row)
+                    listItem.forEachIndexed { index, item ->
+                        if (item.name.lowercase(Locale.ROOT).contains(charSearch.lowercase(Locale.ROOT))) {
+                            if(index == selectedItemPos){
+                                item.isSelected = true
+                            }
+                            resultList.add(item)
                         }
                     }
                     filterList = resultList

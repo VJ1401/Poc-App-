@@ -14,6 +14,7 @@ data class Items(
     val watchers_count:Int,
     val watchers:Int,
     val score:Int,
+    var isSelected:Boolean = false
 )
 
 
