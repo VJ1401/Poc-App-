@@ -1,0 +1,5 @@
+<resources>c
+    <string name="app_name">POC App</string>
+    <string name="welcome_text">Welcome</string>
+    <string name="get_text">Get Data</string>
+</resources>
